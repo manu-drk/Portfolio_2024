@@ -1,0 +1,93 @@
+body {
+    margin: 0; 
+    padding: 0;
+    background: #021514;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+	flex-direction: column;
+}
+nav {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background-color: #333;
+    color: #fff;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul li {
+    flex: 1;
+    text-align: center;
+}
+
+nav ul li a {
+    display: block;
+    padding: 15px;
+    color: #11790d;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    background-color: #575757;
+}
+
+nav ul li.center {
+    flex: 2;
+    font-size: 1.5em;
+}
+.carousel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 1000px;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.carousel-item {
+    width: 600px;
+    height: 400px;
+    margin: 0 10px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #11790d, 0 0 20px #11790d, 0 0 20px #11790d;
+    animation: animate 2s infinite alternate;
+    transition: transform 0.5s, opacity 0.5s;
+    cursor: pointer;
+    position: absolute;
+    transform: scale(0.6);
+    opacity: 0.6;
+}
+.carousel-item img {
+	border-radius: 20px;
+}
+
+.carousel-item:nth-child(1) { transform: translateX(-300px) scale(0.8); opacity: 0.8; z-index: 2; }
+.carousel-item:nth-child(2) { transform: translateX(0px) scale(1); opacity: 1; z-index: 3; }
+.carousel-item:nth-child(3) { transform: translateX(300px) scale(0.8); opacity: 0.8; z-index: 2; }
+.carousel-item:nth-child(4) { transform: translateX(600px) scale(0.6); opacity: 0.6; z-index: 1; }
+.carousel-item:nth-child(5) { transform: translateX(-600px) scale(0.4); opacity: 0.4; z-index: 0; }
+
+/* .carousel-item:nth-child(1) { transform: translateX(-300px) scale(0.8); opacity: 0.8; }
+.carousel-item:nth-child(2) { transform: translateX(0px) scale(1); opacity: 1; }
+.carousel-item:nth-child(3) { transform: translateX(300px) scale(0.8); opacity: 0.8; }
+.carousel-item:nth-child(4) { transform: translateX(600px) scale(0.6); opacity: 0.6; }
+.carousel-item:nth-child(5) { transform: translateX(900px) scale(0.4); opacity: 0.4; } */
+
+
+@keyframes animate {
+    to {
+        box-shadow: 0 0 35px #11790d, 0 0 35px #11790d, 0 0 35px #11790d;
+    }
+}

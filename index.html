@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>3D Glowing Card Carousel</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li class="center"><a href="#">Portfolio</a></li>
+            <li><a href="#" onclick="history.back()">Retour</a></li>
+        </ul>
+    </nav>
+    <div class="carousel">
+        <div class="carousel-item" onclick="goTo('page1.html')"><img src="./images/cv.jpg"></div>
+        <div class="carousel-item" onclick="goTo('page2.html')"><img src="./images/presentation.jpg"></div>
+        <div class="carousel-item" onclick="goTo('page3.html')"><img src="./images/projet_ocr.jpg"></div>
+        <div class="carousel-item" onclick="goTo('page4.html')"><img src="./images/projets_pro.jpg"></div>
+        <div class="carousel-item" onclick="goTo('page5.html')"><img src="./images/Me_contacter.jpg"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
