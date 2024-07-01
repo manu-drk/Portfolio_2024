@@ -48,12 +48,14 @@ function moveCarousel(direction) {
     showCarouselItem(currentIndex);
 }
 
+// function goTo(url) {
+//     if (currentIndex === 1) {
+//         window.location.href = url;
+//     }
+// }
 function goTo(url) {
-    if (currentIndex === 1) {
-        window.location.href = url;
-    }
+    window.open(url); // Ouvrir le lien dans un nouvel onglet
 }
-
 
 
 document.addEventListener('DOMContentLoaded', () => {
