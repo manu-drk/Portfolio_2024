@@ -20,7 +20,7 @@
     {
 		"id": "2",
 		"title": "Kasa",
-		"cover": "./images/projet_ocr.jpg",		
+		"cover": "./images/kasa.png",		
 		"Site": "",
         "Github": "https://github.com/manu-drk/Developpeur-Web-Projet-5-Kasa",
 			"tags": [
@@ -52,7 +52,7 @@
     {
 		"id": "4",
 		"title": "Booki",
-		"cover": "./images/projet_ocr.jpg",		
+		"cover": "./images/Booki.png",		
 		"Site": "",
         "Github": "https://github.com/manu-drk/Developpeur-Web-Projet-2-Booki",
 			"tags": [
