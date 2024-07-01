@@ -1,0 +1,82 @@
+[
+	{
+		"id": "1",
+		"title": "Nina Carducci",
+		"cover": "./images/Capture d'écran 2024-07-01 111819.png",		
+		"Site": "https://manu-drk.github.io/Developpeur-Web-Projet-4-Nina-Carducci",
+        "Github": "https://github.com/manu-drk/Developpeur-Web-Projet-4-Nina-Carducci",
+			"tags": [
+			"Javascript",
+			"HTML",
+            "CSS",
+            "SEO",
+			"Boostrap",
+            "Lighthouse",
+            "Wave",
+            "Rich Snippets",
+            "Figma"
+		]
+	},
+    {
+		"id": "2",
+		"title": "Kasa",
+		"cover": "./images/projet_ocr.jpg",		
+		"Site": "",
+        "Github": "https://github.com/manu-drk/Developpeur-Web-Projet-5-Kasa",
+			"tags": [
+			"Javascript",
+			"NodeJS",
+            "CSS",
+            "React",
+            "React Router",
+            "Figma",
+            "GitHub"            
+		]
+	},
+    {
+		"id": "3",
+		"title": "Sophie Bluel",
+		"cover": "./images/projet_ocr.jpg",		
+		"Site": "",
+        "Github": "https://github.com/manu-drk/Developpeur-Web-Projet-3-Sophie-Bluel",
+			"tags": [
+			"Javascript",
+			"NodeJS",
+            "CSS",
+            "HTML",
+            "Swagger API",
+            "Figma",
+            "GitHub"          
+		]
+	},
+    {
+		"id": "4",
+		"title": "Booki",
+		"cover": "./images/projet_ocr.jpg",		
+		"Site": "",
+        "Github": "https://github.com/manu-drk/Developpeur-Web-Projet-2-Booki",
+			"tags": [
+			"CSS",
+            "HTML",            
+            "Figma",
+            "GitHub"           
+		]
+	},
+    {
+		"id": "5",
+		"title": "Mon vieux grimoire",
+		"cover": "./images/projet_ocr.jpg",		
+		"Site": "",
+        "Github": "https://github.com/manu-drk/Developpeur-Web-Projet-6-Mon-Vieux-Grimoire",
+			"tags": [
+			"Javascript",
+			"NodeJS",
+            "Express",
+            "Postman",
+            "MongoDB",
+            "Figma",
+            "GitHub",
+            "API"          
+		]
+	}
+]

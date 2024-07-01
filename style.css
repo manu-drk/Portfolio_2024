@@ -40,7 +40,8 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    background-color: #575757;
+    transform: scale(1.2);
+    text-shadow: 0 0 1px #4feb4a;
 }
 
 nav ul li.center {
@@ -112,4 +113,104 @@ footer p {
     font-size: 15px;
     margin: 0;
     color: #ffffff;
+}
+
+.carousel-ocr {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 60%; 
+}
+
+.carousel-item-ocr {    
+    width: 600px;
+    height: 400px;
+    margin: 0 10px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #11790d, 0 0 20px #11790d, 0 0 20px #11790d;
+    animation: animate 2s infinite alternate;
+    transition: transform 0.5s, opacity 0.5s;
+    cursor: pointer;
+    position: absolute;
+    transform: scale(0.6);
+    opacity: 0.6;
+}
+
+.carousel-item-ocr img {
+    width: 600px;
+    height: 400px;
+	border-radius: 20px;
+}
+.details-container {
+    margin-top: 10px;
+}
+
+.links-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.links-container a {
+    margin: 0 10px;
+    font-size: 30px;
+    color: #11790d;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.links-container a:hover {
+    transform: scale(1.2);
+    text-shadow: 0 0 1px #4feb4a;
+}
+.tags-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.tag {
+    display: inline-block;
+    background-color: #333;
+    color: #fff;
+    padding: 7px 15px;
+    margin: 0 5px;
+    border-radius: 15px;
+    font-size: 12px;
+    border: 1 solid #11790d;
+}
+.carousel-pro {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 60%; 
+}
+
+.carousel-item-pro {    
+    width: 600px;
+    height: 400px;
+    margin: 0 10px;
+    border-radius: 20px;
+    box-shadow: 0 0 20px #11790d, 0 0 20px #11790d, 0 0 20px #11790d;
+    animation: animate 2s infinite alternate;
+    transition: transform 0.5s, opacity 0.5s;
+    cursor: pointer;
+    position: absolute;
+    transform: scale(0.6);
+    opacity: 0.6;
+}
+
+.carousel-item-pro img {
+    width: 600px;
+    height: 400px;
+	border-radius: 20px;
 }
