@@ -240,3 +240,8 @@ footer p {
     transform: scale(0.6);
     opacity: 0.6;
 }
+
+.carousel-cv h2 {
+    display: flex;
+    justify-content: center;
+}
