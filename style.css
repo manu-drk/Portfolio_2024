@@ -45,6 +45,7 @@ nav ul li a {
     display: block;
     padding: 15px;
     color: var(--link-color);
+    font-size: 16px;
     text-decoration: none;
 }
 
@@ -73,7 +74,7 @@ nav ul li.center {
     height: 400px;
     margin: 0 10px;
     border-radius: 20px;
-    border: 1px solid var(--carousel-border);
+    border: 2px solid var(--carousel-border);
     box-shadow: 0 0 20px var(--carousel-shadow), 0 0 20px var(--carousel-shadow), 0 0 20px var(--carousel-shadow);    
     animation: var(--carousel-animation);
     /* animation: animate 2s infinite alternate; */
@@ -105,6 +106,7 @@ nav ul li.center {
     height: 400px;
     margin: 0 10px;
     border-radius: 20px;
+    border: 1px solid var(--carousel-border);
     box-shadow: 0 0 20px var(--carousel-shadow), 0 0 20px var(--carousel-shadow), 0 0 20px var(--carousel-shadow);
     animation: var(--carousel-animation);
     transition: transform 0.5s, opacity 0.5s;
@@ -112,6 +114,7 @@ nav ul li.center {
     position: absolute;
     transform: scale(0.6);
     opacity: 0.6;
+    background-color: white;
 }
 
 
@@ -206,8 +209,8 @@ footer p {
     padding: 7px 15px;
     margin: 0 5px;
     border-radius: 15px;
-    font-size: 12px;
-    border: 1 solid var(--tag-border-color);
+    font-size: 16px;
+    border: 2px solid var(--tag-border-color);
 }
 
 .carousel-pro {
@@ -277,10 +280,23 @@ footer p {
     position: relative;
     height: 60%;
 }
-.carousel-cv h2 {
+.carousel-cv h2,
+.carousel-presentation h2 {
     display: flex;
     justify-content: center;
+    color: black;
 }
+
+.carousel-cv li ,
+.carousel-presentation li {
+    display: flex;
+    justify-content: center;
+    color: black;
+}
+
+/* ************************************** */
+
+
 
 /* body {
     margin: 0; 
@@ -373,7 +389,7 @@ nav ul li.center {
 .carousel-item:nth-child(4) { transform: translateX(600px) scale(0.6); opacity: 0.6; }
 .carousel-item:nth-child(5) { transform: translateX(900px) scale(0.4); opacity: 0.4; } */
 
-
+/* 
 @keyframes animate {
     to {
         box-shadow: 0 0 35px #11790d, 0 0 35px #11790d, 0 0 35px #11790d;

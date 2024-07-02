@@ -24,7 +24,8 @@
     --link-color: #007bff;
     --link-hover-shadow: #0056b3;
     --carousel-border: #007bff;
-    --carousel-shadow: #007bff;
+    --carousel-shadow: none;
+    /* --carousel-shadow: #007bff; */
     --carousel-animation: none;   
     --footer-background-color: #ddd;
     --footer-text-color: #000;
