@@ -16,20 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const titleContainer = document.createElement('div');
                 titleContainer.setAttribute('class', 'carousel-title');
 
-                let currentIndexOCR = 0; // Variable pour suivre l'index actuel du carousel
-
-                // Fonction pour mettre à jour le titre en fonction de l'ID
-                function updateTitle(id) {
-                    const project = carouselData.find(item => item.id === id);
-                    if (project) {
-                        titleElement.innerText = project.title;
-                    }
-                }
-
-                // Récupération du premier titre de projet pour l'afficher au-dessus du carousel initial
-                const firstItemTitle = carouselData[0].title;
                 const titleElement = document.createElement('h1');
-                titleElement.innerText = firstItemTitle;
                 titleContainer.appendChild(titleElement);
                 carouselContainer.before(titleContainer);
 
@@ -38,61 +25,77 @@ document.addEventListener('DOMContentLoaded', () => {
                 detailsContainer.setAttribute('class', 'details-container');
                 carouselContainer.after(detailsContainer);
 
+                // Variable pour suivre l'index actuel du carousel
+                let currentIndexOCR = 0;
+
+                // Fonction pour mettre à jour le titre et les détails en fonction de l'index
+                function updateDetails(index) {
+                    const project = carouselData[index];
+                    if (project) {
+                        // Mettre à jour le titre
+                        titleElement.innerText = project.title;
+
+                        // Mettre à jour les liens et les tags
+                        detailsContainer.innerHTML = '';
+                        const detailItem = document.createElement('div');
+                        detailItem.setAttribute('class', 'detail-item');
+
+                        const linksContainer = document.createElement('div');
+                        linksContainer.setAttribute('class', 'links-container');
+
+                        if (project.Site) {
+                            const siteLink = document.createElement('a');
+                            siteLink.setAttribute('href', project.Site);
+                            siteLink.setAttribute('target', '_blank');
+                            siteLink.innerText = 'Site';
+                            linksContainer.appendChild(siteLink);
+                        }
+
+                        if (project.Github) {
+                            const githubLink = document.createElement('a');
+                            githubLink.setAttribute('href', project.Github);
+                            githubLink.setAttribute('target', '_blank');
+                            githubLink.innerText = 'GitHub';
+                            linksContainer.appendChild(githubLink);
+                        }
+
+                        detailItem.appendChild(linksContainer);
+
+                        // Ajouter le bouton "Description"
+                        const descriptionButton = document.createElement('button');
+                        descriptionButton.innerText = 'Description';
+                        descriptionButton.onclick = () => showModal(project.description || []);
+                        detailItem.appendChild(descriptionButton);
+
+                        // Mettre à jour les tags
+                        const tagsContainer = document.createElement('div');
+                        tagsContainer.setAttribute('class', 'tags-container');
+                        project.tags.forEach(tag => {
+                            const tagElement = document.createElement('span');
+                            tagElement.setAttribute('class', 'tag');
+                            tagElement.innerText = tag;
+                            tagsContainer.appendChild(tagElement);
+                        });
+
+                        detailItem.appendChild(tagsContainer);
+                        detailsContainer.appendChild(detailItem);
+                    }
+                }
+
                 carouselData.forEach((item, index) => {
                     // Création de l'élément du carousel avec l'image
                     const carouselItem = document.createElement('div');
                     carouselItem.setAttribute('class', 'carousel-item-ocr');
-                    carouselItem.setAttribute('data-id', item.id); // Ajout de l'attribut data-id
+                    carouselItem.setAttribute('data-index', index); // Ajout de l'attribut data-index
 
                     const image = document.createElement('img');
                     image.setAttribute('src', item.cover);
                     carouselItem.appendChild(image);
                     carouselContainer.appendChild(carouselItem);
-
-                    // Création des détails associés à chaque élément du carousel
-                    const detailItem = document.createElement('div');
-                    detailItem.setAttribute('class', 'detail-item');
-                    detailItem.setAttribute('data-index', index);
-
-                    const linksContainer = document.createElement('div');
-                    linksContainer.setAttribute('class', 'links-container');
-
-                    // Ajout des liens Site et GitHub si disponibles
-                    if (item.Site) {
-                        const siteLink = document.createElement('a');
-                        siteLink.setAttribute('href', item.Site);
-                        siteLink.setAttribute('target', '_blank');
-                        siteLink.innerText = 'Site';
-                        linksContainer.appendChild(siteLink);
-                    }
-
-                    if (item.Github) {
-                        const githubLink = document.createElement('a');
-                        githubLink.setAttribute('href', item.Github);
-                        githubLink.setAttribute('target', '_blank');
-                        githubLink.innerText = 'GitHub';
-                        linksContainer.appendChild(githubLink);
-                    }
-
-                    detailItem.appendChild(linksContainer);
-
-                    // Ajout des tags associés à chaque projet
-                    const tagsContainer = document.createElement('div');
-                    tagsContainer.setAttribute('class', 'tags-container');
-                    item.tags.forEach(tag => {
-                        const tagElement = document.createElement('span');
-                        tagElement.setAttribute('class', 'tag');
-                        tagElement.innerText = tag;
-                        tagsContainer.appendChild(tagElement);
-                    });
-
-                    detailItem.appendChild(tagsContainer);
-                    detailsContainer.appendChild(detailItem);
                 });
 
                 function showOCRCarouselItem(index) {
                     const items = document.querySelectorAll('.carousel-item-ocr');
-                    const details = document.querySelectorAll('.detail-item');
                     const totalItems = items.length;
 
                     items.forEach((item, i) => {
@@ -109,9 +112,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                 item.style.opacity = '1';
                                 item.style.zIndex = 3;
                                 item.onclick = null;
-                                details[i].style.display = 'block';
-                                // Mettre à jour le titre lorsque l'élément central change
-                                updateTitle(item.getAttribute('data-id'));
+                                // Mettre à jour les détails lorsque l'élément central change
+                                updateDetails(i);
                                 break;
                             case 2:
                                 item.style.transform = 'translateX(300px) scale(0.8)';
@@ -128,10 +130,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     });
 
-                    details.forEach((detail, i) => {
-                        detail.style.display = i === index ? 'block' : 'none';
-                    });
-
                     currentIndexOCR = index;
                 }
 
@@ -142,23 +140,60 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 showOCRCarouselItem(currentIndexOCR);
+
+                // Gestion de la modal
+                const modal = document.createElement('div');
+                modal.id = 'descriptionModal';
+                modal.classList.add('modal');
+
+                const modalContent = document.createElement('div');
+                modalContent.classList.add('modal-content');
+
+                const closeModal = document.createElement('span');
+                closeModal.classList.add('close');
+                closeModal.innerHTML = '&times;';
+                closeModal.onclick = () => {
+                    modal.style.display = 'none';
+                };
+
+                modalContent.appendChild(closeModal);
+
+                const modalDescription = document.createElement('div');
+                modalDescription.classList.add('modal-description');
+                modalContent.appendChild(modalDescription);
+
+                modal.appendChild(modalContent);
+                document.body.appendChild(modal);
+
+                function showModal(description) {
+                    modalDescription.innerHTML = ''; // Clear previous description
+                    description.forEach(paragraph => {
+                        const p = document.createElement('p');
+                        p.innerText = paragraph;
+                        modalDescription.appendChild(p);
+                    });
+                    modal.style.display = 'block';
+                }
+
+                // Close the modal when clicking outside of it
+                window.onclick = function(event) {
+                    if (event.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                }
             })
-            .catch(error => console.error('Error fetching OCR carousel data:', error));
+            .catch(error => {
+                console.error('There has been a problem with your fetch operation:', error);
+            });
     }
 
     loadOCRCarousel();
-
-    function goBack() {
-        console.log('goBack called');
-        history.back();
-    }
 });
-
 
 
 // document.addEventListener('DOMContentLoaded', () => {
 //     console.log('DOM fully loaded and parsed');
-    
+
 //     function loadOCRCarousel() {
 //         fetch('datas/ocr.json')
 //             .then(response => {
@@ -169,61 +204,87 @@ document.addEventListener('DOMContentLoaded', () => {
 //             })
 //             .then(carouselData => {
 //                 console.log('OCR data loaded:', carouselData);
+
 //                 const carouselContainer = document.querySelector('.carousel-ocr');
+//                 const titleContainer = document.createElement('div');
+//                 titleContainer.setAttribute('class', 'carousel-title');
+
+//                 const titleElement = document.createElement('h1');
+//                 titleContainer.appendChild(titleElement);
+//                 carouselContainer.before(titleContainer);
+
+//                 // Conteneur pour les détails des projets
 //                 const detailsContainer = document.createElement('div');
 //                 detailsContainer.setAttribute('class', 'details-container');
 //                 carouselContainer.after(detailsContainer);
-                
+
+//                 // Variable pour suivre l'index actuel du carousel
+//                 let currentIndexOCR = 0;
+
+//                 // Fonction pour mettre à jour le titre et les détails en fonction de l'index
+//                 function updateDetails(index) {
+//                     const project = carouselData[index];
+//                     if (project) {
+//                         // Mettre à jour le titre
+//                         titleElement.innerText = project.title;
+
+//                         // Mettre à jour les liens
+//                         detailsContainer.innerHTML = '';
+//                         const detailItem = document.createElement('div');
+//                         detailItem.setAttribute('class', 'detail-item');
+
+//                         const linksContainer = document.createElement('div');
+//                         linksContainer.setAttribute('class', 'links-container');
+
+//                         if (project.Site) {
+//                             const siteLink = document.createElement('a');
+//                             siteLink.setAttribute('href', project.Site);
+//                             siteLink.setAttribute('target', '_blank');
+//                             siteLink.innerText = 'Site';
+//                             linksContainer.appendChild(siteLink);
+//                         }
+
+//                         if (project.Github) {
+//                             const githubLink = document.createElement('a');
+//                             githubLink.setAttribute('href', project.Github);
+//                             githubLink.setAttribute('target', '_blank');
+//                             githubLink.innerText = 'GitHub';
+//                             linksContainer.appendChild(githubLink);
+//                         }
+
+//                         detailItem.appendChild(linksContainer);
+
+//                         // Mettre à jour les tags
+//                         const tagsContainer = document.createElement('div');
+//                         tagsContainer.setAttribute('class', 'tags-container');
+//                         project.tags.forEach(tag => {
+//                             const tagElement = document.createElement('span');
+//                             tagElement.setAttribute('class', 'tag');
+//                             tagElement.innerText = tag;
+//                             tagsContainer.appendChild(tagElement);
+//                         });
+
+//                         detailItem.appendChild(tagsContainer);
+//                         detailsContainer.appendChild(detailItem);
+//                     }
+//                 }
+
 //                 carouselData.forEach((item, index) => {
+//                     // Création de l'élément du carousel avec l'image
 //                     const carouselItem = document.createElement('div');
 //                     carouselItem.setAttribute('class', 'carousel-item-ocr');
-                    
+//                     carouselItem.setAttribute('data-index', index); // Ajout de l'attribut data-index
+
 //                     const image = document.createElement('img');
 //                     image.setAttribute('src', item.cover);
 //                     carouselItem.appendChild(image);
 //                     carouselContainer.appendChild(carouselItem);
-
-//                     const detailItem = document.createElement('div');
-//                     detailItem.setAttribute('class', 'detail-item');
-//                     detailItem.setAttribute('data-index', index);
-
-//                     const linksContainer = document.createElement('div');
-//                     linksContainer.setAttribute('class', 'links-container');
-                    
-//                     const siteLink = document.createElement('a');
-//                     siteLink.setAttribute('href', item.Site);
-//                     siteLink.setAttribute('target', '_blank');
-//                     siteLink.innerText = 'Site';
-                    
-//                     const githubLink = document.createElement('a');
-//                     githubLink.setAttribute('href', item.Github);
-//                     githubLink.setAttribute('target', '_blank');
-//                     githubLink.innerText = 'GitHub';
-                    
-//                     linksContainer.appendChild(siteLink);
-//                     linksContainer.appendChild(githubLink);
-//                     detailItem.appendChild(linksContainer);
-                    
-//                     const tagsContainer = document.createElement('div');
-//                     tagsContainer.setAttribute('class', 'tags-container');
-                    
-//                     item.tags.forEach(tag => {
-//                         const tagElement = document.createElement('span');
-//                         tagElement.setAttribute('class', 'tag');
-//                         tagElement.innerText = tag;
-//                         tagsContainer.appendChild(tagElement);
-//                     });
-                    
-//                     detailItem.appendChild(tagsContainer);
-//                     detailsContainer.appendChild(detailItem);
 //                 });
 
-//                 let currentIndexOCR = 0;
-                
 //                 function showOCRCarouselItem(index) {
 //                     const items = document.querySelectorAll('.carousel-item-ocr');
-//                     const details = document.querySelectorAll('.detail-item');
 //                     const totalItems = items.length;
+
 //                     items.forEach((item, i) => {
 //                         const pos = (i - index + totalItems) % totalItems;
 //                         switch (pos) {
@@ -238,7 +299,8 @@ document.addEventListener('DOMContentLoaded', () => {
 //                                 item.style.opacity = '1';
 //                                 item.style.zIndex = 3;
 //                                 item.onclick = null;
-//                                 details[i].style.display = 'block';
+//                                 // Mettre à jour les détails lorsque l'élément central change
+//                                 updateDetails(i);
 //                                 break;
 //                             case 2:
 //                                 item.style.transform = 'translateX(300px) scale(0.8)';
@@ -254,9 +316,8 @@ document.addEventListener('DOMContentLoaded', () => {
 //                                 break;
 //                         }
 //                     });
-//                     details.forEach((detail, i) => {
-//                         detail.style.display = i === index ? 'block' : 'none';
-//                     });
+
+//                     currentIndexOCR = index;
 //                 }
 
 //                 function moveOCRCarousel(direction) {
@@ -271,9 +332,9 @@ document.addEventListener('DOMContentLoaded', () => {
 //     }
 
 //     loadOCRCarousel();
-// });
 
-// function goBack() {
-//     console.log('goBack called');
-//     history.back();
-// }
+//     function goBack() {
+//         console.log('goBack called');
+//         history.back();
+//     }
+// });
