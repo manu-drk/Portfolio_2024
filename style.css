@@ -186,7 +186,7 @@ footer p {
 
 .links-container a {
     margin: 0 10px;
-    font-size: 30px;
+    font-size: 27px;
     color: var(--link-color);
     text-decoration: none;
     font-weight: bold;
@@ -334,7 +334,7 @@ footer p {
     border-radius: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
     position: absolute;
     top: 47%;
     left: 50%;
@@ -356,14 +356,15 @@ footer p {
 }
 
 .modal-description p {
-    margin: 1em 0;
+
+    margin: 3em 0;
 }
 
 
 button {
     background-color: transparent;
     margin: 0 10px;
-    font-size: 30px;
+    font-size: 27px;
     color: var(--link-color);
     text-decoration: none;
     font-weight: bold;
