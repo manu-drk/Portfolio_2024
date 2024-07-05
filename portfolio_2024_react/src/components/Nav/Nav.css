@@ -1,0 +1,40 @@
+nav {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    background-color: var(--nav-background-color);
+    color: var(--nav-text-color);
+    z-index: 99;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul li {
+    flex: 1;
+    text-align: center;
+}
+
+nav ul li a {
+    display: block;
+    padding: 15px;
+    color: var(--link-color);
+    font-size: 16px;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    transform: scale(1.2);
+    text-shadow: 0 0 1px var(--link-hover-shadow);
+}
+
+nav ul li.center {
+    flex: 2;
+    font-size: 1.5em;
+}

@@ -35,7 +35,7 @@
 		"id": "74",
 		"title": "Compétences",        
         "description": ["Bash",
-        "Bcrypt",        
+        "Bcrypt",     
         "CSS",
         "Express",
         "Express Mongo",
