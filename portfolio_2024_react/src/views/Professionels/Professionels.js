@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import Nav from '../../components/Nav/Nav';
+import Footer from '../../components/Footer/Footer';
 import '../../App.css';
+import './Professionels.css'
 
 function Professionals() {
     const [carouselData, setCarouselData] = useState([]);
@@ -38,27 +41,31 @@ function Professionals() {
     }
 
     return (
-        <div className="carousel-pro">
-            {carouselData.map((item, index) => (
-                <div key={index} className={`carousel-item-pro ${index === currentIndexPro ? 'active' : ''}`}>
-                    <img src={item.cover} alt="Cover" />
-                    <div className="details-container">
-                        <div className="links-container">
-                            <a href={item.Site} target="_blank" rel="noopener noreferrer">Site</a>
-                            <a href={item.Github} target="_blank" rel="noopener noreferrer">GitHub</a>
-                        </div>
-                        <div className="tags-container">
-                            {item.tags.map((tag, tagIndex) => (
-                                <span key={tagIndex} className="tag">{tag}</span>
-                            ))}
+        <div className="professionals-page">
+            <Nav />
+            <div className="carousel-pro">
+                {carouselData.map((item, index) => (
+                    <div key={index} className={`carousel-item-pro ${index === currentIndexPro ? 'active' : ''}`}>
+                        <img src={item.cover} alt="Cover" />
+                        <div className="details-container">
+                            <div className="links-container">
+                                <a href={item.Site} target="_blank" rel="noopener noreferrer">Site</a>
+                                <a href={item.Github} target="_blank" rel="noopener noreferrer">GitHub</a>
+                            </div>
+                            <div className="tags-container">
+                                {item.tags.map((tag, tagIndex) => (
+                                    <span key={tagIndex} className="tag">{tag}</span>
+                                ))}
+                            </div>
                         </div>
                     </div>
+                ))}
+                <div className="carousel-nav">
+                    <button className="carousel-nav-left" onClick={() => moveProCarousel(-1)}>Previous</button>
+                    <button className="carousel-nav-right" onClick={() => moveProCarousel(1)}>Next</button>
                 </div>
-            ))}
-            <div className="carousel-nav">
-                <button className="carousel-nav-left" onClick={() => moveProCarousel(-1)}>Previous</button>
-                <button className="carousel-nav-right" onClick={() => moveProCarousel(1)}>Next</button>
             </div>
+            <Footer />
         </div>
     );
 }

@@ -1,0 +1,42 @@
+.carousel-presentation .carousel-item-presentation {
+    width: 600px;
+    height: 400px;
+    margin: 0 10px;
+    border-radius: 20px;
+    border: 1px solid var(--carousel-border);
+    box-shadow: 0 0 20px var(--carousel-shadow), 0 0 20px var(--carousel-shadow), 0 0 20px var(--carousel-shadow);
+    animation: var(--carousel-animation);
+    transition: transform 0.5s, opacity 0.5s;
+    /* cursor: pointer; */
+    position: absolute;
+    transform: scale(0.6);
+    opacity: 0.6;
+    background-color: white;
+}
+
+.carousel-presentation {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 480px;
+}
+
+.carousel-presentation h2 {
+    display: flex;
+    justify-content: center;
+    color: black;
+}
+
+
+.carousel-presentation li {
+    display: flex;
+    justify-content: center;
+    color: black;
+    margin: 10px auto;
+}
+.details-container {
+    margin-top: 0px;
+}

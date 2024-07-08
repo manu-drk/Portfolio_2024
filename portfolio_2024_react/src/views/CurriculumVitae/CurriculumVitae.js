@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import Nav from '../../components/Nav/Nav';
+import Footer from '../../components/Footer/Footer';
 import '../../App.css';
+import './CurriculumVitae.css';
 
 const CurriculumVitae = ({ data, currentIndex }) => {
     return (
@@ -45,9 +48,11 @@ const CurriculumVitaeContainer = () => {
 
     return (
         <div className="App">
+            <Nav />
             <CurriculumVitae data={carouselData} currentIndex={currentIndexCv} />
             <div className="carousel-nav-left" onClick={() => moveCvCarousel(-1)}>Left</div>
             <div className="carousel-nav-right" onClick={() => moveCvCarousel(1)}>Right</div>
+            <Footer />
         </div>
     );
 }

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Nav from '../../components/Nav/Nav';
+import Footer from '../../components/Footer/Footer';
 import '../../App.css';
 
 const Presentation = () => {
@@ -97,10 +99,12 @@ const Presentation = () => {
     return (
         <div className="App">
             <div className="carousel-presentation">
+            <Nav />
                 {showPresentationCarouselItem(currentIndex)}
             </div>
             <div className="carousel-nav-left" onClick={() => movePresentationCarousel(-1)}>Left</div>
             <div className="carousel-nav-right" onClick={() => movePresentationCarousel(1)}>Right</div>
+            <Footer />
         </div>
     );
 };
