@@ -7,8 +7,8 @@ const Nav = () => {
     <nav className="Nav">
       <ul>
         <li><Link to="/">Accueil</Link></li>
-        <li><Link to="/ocr-carousel">OCR Carousel</Link></li>
-        {/* Ajoutez ici d'autres liens pour d'autres pages */}
+        <li class="center">Portfolio</li>
+        <li><a href="#" id="mode-toggle">light Mode</a></li>
       </ul>
     </nav>
   );

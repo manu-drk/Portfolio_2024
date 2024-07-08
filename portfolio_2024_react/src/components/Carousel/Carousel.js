@@ -9,7 +9,7 @@ const Carousel = () => {
   const items = [
     { path: '/curriculum-vitae', imgSrc: '/assets/images/cv.jpg', alt: 'Curriculum Vitae', title: 'Curriculum Vitae' },
     { path: '/presentation', imgSrc: '/assets/images/presentation.jpg', alt: 'Presentation', title: 'Présentation' },
-    { path: '/open-class-room', imgSrc: '/assets/images/projet_ocr.jpg', alt: 'Projet OCR', title: 'Projet OCR' },
+    { path: '/openclassroom', imgSrc: '/assets/images/projet_ocr.jpg', alt: 'Projet OCR', title: 'Projet OCR' },
     { path: '/professionels', imgSrc: '/assets/images/projets_pro.jpg', alt: 'Projets Pro', title: 'Projets Pro' },
     { path: '/contact', imgSrc: '/assets/images/Me_contacter.jpg', alt: 'Contact', title: 'Contact' },
   ];
